@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-applesdgothicneo@1.0/all.min.css">
+  <title>봉사 짝 생성</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #4A6DA7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #display {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 5px;
+      min-height: 100px;
+    }
+
+    #display button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      float: left;
+      width: 20%;
+      height: auto;
+      background-color: #4A6DA7;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    #display button:last-child {
+      margin-right: 0;
+    }
+  </style>
+</head>
+
+
+<div class="container">
+  <h2 style="font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;text-align : center">봉사 짝 생성</h2>
+  <h3 style="font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;text-align : center">아래의 검색창에서 이름을 입력한 후 등록을
+    누르세요</h3>
+  <label for="user-input"></label>
+  <input type="text" onkeyup="enterkey(event)" id="user-input">
+  <button onclick="displayInput()" style="font-size: larger;">등록</button>
+  <div id="display"></div>
+</div>
+
+<script>
+  function displayInput() {
+    var userInput = document.getElementById("user-input").value.trim();
+    if (userInput === "") {
+      return; // ignore empty input
+    }
+
+    var displayArea = document.getElementById("display");
+    var wordElement = document.createElement("button");
+    wordElement.innerHTML = userInput;
+    displayArea.appendChild(wordElement);
+
+    document.getElementById("user-input").value = ""; // clear input field
+    document.getElementById("user-input").focus(); // focus on input field
+  }
+
+  function enterkey(event) {
+    if (event.keyCode == 13) {
+      displayInput();
+    }
+  }
+</script>
+
+</body>
+
+</html>
