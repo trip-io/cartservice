@@ -6,7 +6,7 @@
   <title>봉사 짝 생성</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif";
       margin: 0;
       padding: 0;
       background-color: #f5f5f5;
@@ -88,10 +88,11 @@
   <h2 style="font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;text-align : center">봉사 짝 생성</h2>
   <h3 style="font-family: 'AppleSDGothicNeo', 'Noto Sans KR', sans-serif;text-align : center">아래의 검색창에서 이름을 입력한 후 등록을
     누르세요</h3>
+  <div id="display"></div>
   <label for="user-input"></label>
   <input type="text" onkeyup="enterkey(event)" id="user-input">
   <button onclick="displayInput()" style="font-size: larger;">등록</button>
-  <div id="display"></div>
+
 </div>
 
 <script>
@@ -104,17 +105,26 @@
     var displayArea = document.getElementById("display");
     var wordElement = document.createElement("button");
     wordElement.innerHTML = userInput;
+
+    // Add event listener to remove the button when clicked
+    wordElement.addEventListener("click", function () {
+      this.remove();
+    });
+
     displayArea.appendChild(wordElement);
 
     document.getElementById("user-input").value = ""; // clear input field
     document.getElementById("user-input").focus(); // focus on input field
   }
+
+
   //
   function enterkey(event) {
     if (event.keyCode == 13) {
       displayInput();
     }
   }
+
 </script>
 
 </body>
